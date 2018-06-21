@@ -1,0 +1,3 @@
+# Advanced EOS 003 - One-to-Many Table Relationships
+## Section 2 - Indexes
+Using secondary indexes is an alternative way we can scale the number of references but avoid excessively large arrays (vectors) filling our table rows. It also gives us a method to backwards reference the relationship, which can be combined with previous relationship methods, allowing us to move seamlessly between children and parents of data. For this we will use what we learned in the previous post, Secondary Table Indexes. First we’re going to modify our structures from the previous method, removing our dogs vector from the Owner struct and adding a reference to our owner within the Dog struct.
