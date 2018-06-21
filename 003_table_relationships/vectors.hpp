@@ -4,14 +4,13 @@
 using namespace eosio;
 using namespace std;
 
-
 class example_table_vectors : contract {
 
 	public:
 
 		explicit example_table_vectors(action_name self) : contract(self) {}
 		// @abi action
-		void create(const name account, string dogName);
+		void create(const name account, const string& dogName);
 
 	private:
 		// @abi table owners i64

@@ -1,6 +1,6 @@
 #include "vectors.hpp"
 
-void example_table_vectors::create(const name account, string dogName) {
+void example_table_vectors::create(const name account, const string& dogName) {
 	// Check and update owner
 	owner_table owners(_self, _self);
 	auto dogOwner = owners.get(account);
