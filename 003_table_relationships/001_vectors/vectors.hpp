@@ -10,6 +10,8 @@ class example_table_vectors : contract {
 
 		explicit example_table_vectors(action_name self) : contract(self) {}
 		// @abi action
+		void signup(const name account);
+		// @abi action
 		void create(const name account, const string& dogName);
 
 	private:

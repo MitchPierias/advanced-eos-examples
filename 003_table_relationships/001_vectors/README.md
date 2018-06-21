@@ -9,16 +9,16 @@ struct Owner {
 }
 
 struct Dog {
-    uint64_t        	uid;
+    uint64_t     		uid;
     string				name;
 }
 ```
 
-Now inside our `void example_table_vectors::create(... )` method, we're goind to push a reference to the `Dog` using the `Dog.uid` we stored prior.
+Now inside our `void example_table_vectors::create(... )` method, we're going to push a reference to the `Dog` using the `Dog.uid` we stored prior.
 
 ```
-owners.modify(dogOwner, 0, [&](auto& profile) {
-	profile.dogs.push_back(dogID);
+owners.modify(dogOwner, 0, [&](auto& owner) {
+	owner.dogs.push_back(dogID);
 });
 ```
 
