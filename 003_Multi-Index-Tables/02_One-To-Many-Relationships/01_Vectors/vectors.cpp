@@ -28,7 +28,7 @@ void vectors::add(const name account, string name) {
 	auto currentPlayer = players.find(account);
 	eosio_assert(currentPlayer != players.end(), "Account not registered");
 	// Create and setup a new dog
-	dog_table items(_self, _self);
+	item_table items(_self, _self);
 	auto item = items.emplace(account, [&](auto& item) {
 		item.id = incrementTotalItems();
 		item.name = name;

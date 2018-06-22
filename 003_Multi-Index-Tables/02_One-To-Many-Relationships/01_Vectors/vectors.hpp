@@ -32,7 +32,7 @@ class vectors : contract {
 		};
 
 		typedef multi_index<N(players), Profile> profile_table;
-		typedef multi_index<N(items), Item> dog_table;
+		typedef multi_index<N(items), Item> item_table;
 		typedef singleton<N(totalItems), uint64_t> total_items;
 
 		/**
