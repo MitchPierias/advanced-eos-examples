@@ -14,7 +14,7 @@ class vectors : contract {
 		// @abi action
 		void signup(const name account);
 		// @abi action
-		void add(const name account, string dogName);
+		void add(const name account, string name);
 
 	private:
 		// @abi table players i64
