@@ -3,9 +3,13 @@
 For this final method we're going to use the table scope to represent relationships between our tables. Using the scope adds a sort of protected security by storing data within the specified EOS account (scope).
 
 > ### The EOS data structure
+
 > – code — The account name assigned write permission (contract)
+
 > —- scope — The account where the data is stored
+
 > —–- table — Name of the table being stored
+
 > —–—- record — A table row
 
 We're going to modify our player's `Item`'s to be stored within the scope of our player's account, the use the account scope to look up all the player's items. To start we can remove the `owner` reference in `get_owner()` index for our multi_index `Item` table. You could, and probably should keep this in most cases, but we are being simplistic in these examples and cutting straight to the point.
