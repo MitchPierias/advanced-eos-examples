@@ -1,6 +1,8 @@
 # EOS Multi-Index Tables - One-to-Many Relationships
 ## Section 1: Vectors
-[C++ Vectors](http://www.cplusplus.com/reference/vector/vector/) represent the structure of a dynamic array, allowing us to store a collection of values or sub-collections. In the following example we will use a vector to represent an array of unique item identifiers. The identifiers stored in the `Profile` table will reference the unique `primary_key` of items in our `Item` table.
+[C++ Vectors](http://www.cplusplus.com/reference/vector/vector/) represent the structure of a dynamic array, allowing us to store an arbitrarily sized collection of values.
+
+In the following example we will use a vector to represent an array of unique `Item` identifiers. The identifiers stored in the `Profile` table will serve as a reference to the `primary_key` of rows in our `Item` table.
 
 ```
 struct Profile {
