@@ -1,5 +1,5 @@
 # EOS Multi-Index Tables
-This collection of examples showcase diferent implementations of advanced EOS concepts.
+This collection of examples will showcase diferent implementations of advanced Table concepts in EOS.
 
-- Uniqueness (Generating Unique ID's)
-- One-to-Many Relationships (Table Relationships)
+1. Uniqueness (Generating Unique ID's) (soon)
+2. One-to-Many Relationships (Table Relationships)
