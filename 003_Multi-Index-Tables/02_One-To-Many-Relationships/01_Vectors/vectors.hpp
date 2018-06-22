@@ -1,6 +1,5 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/singleton.hpp>
-#include <eosiolib/crypto.h>
 #include <string>
 
 using namespace eosio;
