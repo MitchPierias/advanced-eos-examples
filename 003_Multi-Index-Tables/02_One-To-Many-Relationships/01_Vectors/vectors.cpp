@@ -30,7 +30,7 @@ void vectors::add(const name account, string name) {
 	// Create and setup a new dog
 	item_table items(_self, _self);
 	auto item = items.emplace(account, [&](auto& item) {
-		item.id = incrementTotalItems();
+		item.id = items.available_primary_key();
 		item.name = name;
 	});
 	// Add the item id reference to the player's items

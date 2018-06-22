@@ -1,5 +1,4 @@
 #include <eosiolib/eosio.hpp>
-#include <eosiolib/singleton.hpp>
 #include <string>
 
 using namespace eosio;
@@ -33,18 +32,6 @@ class vectors : contract {
 
 		typedef multi_index<N(players), Profile> profile_table;
 		typedef multi_index<N(items), Item> item_table;
-		typedef singleton<N(totalItems), uint64_t> total_items;
-
-		/**
-		 * @brief Increment Item Counter
-		 * @author Mitch Pierias <github.com/MitchPierias>
-		 */
-		uint64_t incrementTotalItems() {
-			// Increment our counter if it exists and return
-			uint64_t currentCount = total_items::exists() ? total_items::get() + 1 : 0;
-			total_items::set(currentCount);
-			return currentCount;
-		}
 };
 
 EOSIO_ABI(vectors, (signup)(add));

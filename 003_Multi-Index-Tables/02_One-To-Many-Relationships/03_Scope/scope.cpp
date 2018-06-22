@@ -26,7 +26,7 @@ void scope::add(const name account, string itemName) {
 	// Create and setup a new dog
 	item_table items(_self, account);
 	auto item = items.emplace(account, [&](auto& item) {
-		item.id = 3;
+		item.id = items.available_primary_key();
 		item.name = itemName;
 		item.owner = account;
 	});
