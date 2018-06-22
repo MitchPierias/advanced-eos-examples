@@ -1,11 +1,11 @@
-#include "indexes.hpp"
+#include "scope.hpp"
 
 /**
  * @brief Register Profile
  * @param account <eosio::name> Player account name
  * @author Mitch Pierias <github.com/MitchPierias>
  */
-void indexes::signup(const name account) {
+void scope::signup(const name account) {
 	// Validate account isn't stored
 	profile_table players(_self, _self);
 	auto iter = players.find(account);
@@ -22,9 +22,9 @@ void indexes::signup(const name account) {
  * @param itemName <std::string> Item's name
  * @author Mitch Pierias <github.com/MitchPierias>
  */
-void indexes::add(const name account, string itemName) {
+void scope::add(const name account, string itemName) {
 	// Create and setup a new dog
-	item_table items(_self, _self);
+	item_table items(_self, account);
 	auto item = items.emplace(account, [&](auto& item) {
 		item.id = 3;
 		item.name = itemName;
@@ -37,11 +37,11 @@ void indexes::add(const name account, string itemName) {
  * @param account <eosio::name> Player's account name
  * @author Mitch Pierias <github.com/MitchPierias>
  */
-void indexes::get(const name account) {
-	// Fetch items and display
-	item_table items(_self, _self);
-	auto playerItems = items.get_index<N(byowner)>();
-	auto iter = playerItems.lower_bound(account);
+void scope::get(const name account) {
+	// Fetch the items within the account scope
+	item_table items(_self, account);
+	// Iterate all rows and print
+	auto iter = playerItems.lower_bound();
 	while (iter != playerItems.end()) {
 		print("Item ", iter->name);
 		iter++;
