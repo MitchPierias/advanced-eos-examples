@@ -11,8 +11,8 @@ struct Profile {
 }
 
 struct Item {
-    uint64_t			id;
-    string				name;
+    uint64_t	id;
+    string	name;
 }
 ```
 
