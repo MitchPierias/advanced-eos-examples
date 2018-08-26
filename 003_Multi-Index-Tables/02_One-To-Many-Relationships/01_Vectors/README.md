@@ -28,7 +28,7 @@ The `push_back()` function appends our value to the end of the items vector.
 
 We can even go a step further and define a sub-collection within our item vector
 ```vector<uint64_t, uint32_t> items;```
-where `uint64_t` is our item identifier and `uint32_t` is the item’s age. Alternatively a secondary stuct (collection) can be stored inside the vector like `vector<Item> items;`.
+where `uint64_t` is our item identifier and `uint32_t` is the item’s age. Alternatively a secondary struct (collection) can be stored inside the vector like `vector<Item> items;`.
 
 #### Conclusion
 Vectors are a great method when we want to store related data directly within our table, however table rows could quickly grow excessively large from user abuse or improper data management. In the next section we will explore the use of Secondary Indexes to create relationships between tables.
