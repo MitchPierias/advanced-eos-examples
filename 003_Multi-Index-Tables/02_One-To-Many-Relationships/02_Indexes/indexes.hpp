@@ -11,16 +11,16 @@ class indexes : contract {
 
 		explicit indexes(action_name self) : contract(self) {}
 		// @abi action
-		void signup(const name account);
+		void signup(const account_name account);
 		// @abi action
-		void add(const name account, string itemName);
+		void add(const account_name account, const string itemName, const uint64_t attack);
 		// @abi action
-		void get(const name account);
+		void get(const account_name account);
 
 	private:
 		// @abi table players i64
 		struct Profile {
-		    name        	account;
+		    account_name	account;
 		    auto primary_key() const { return account; };
 		    EOSLIB_SERIALIZE(Profile, (account));
 		};
