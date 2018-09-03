@@ -4,11 +4,11 @@
 using namespace eosio;
 using namespace std;
 
-class unique : contract {
+class uniqueness : public eosio::contract {
 
 	public:
 
-		explicit unique(action_name self) : contract(self) {}
+		using contract::contract;
 		// @abi action
 		void create(const account_name account, const string name, const uint64_t attack);
 
@@ -21,10 +21,10 @@ class unique : contract {
 			account_name      owner;
 
 			auto primary_key() const { return id; };
-			EOSLIB_SERIALIZE(Item, (id)(name)(attack));
+			EOSLIB_SERIALIZE(Item, (id)(name)(attack)(owner));
 		};
 
 		typedef multi_index<N(items), Item> items_table;
 };
 
-EOSIO_ABI(unique, (create));
+EOSIO_ABI(uniqueness, (create));
