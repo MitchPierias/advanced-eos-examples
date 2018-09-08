@@ -3,11 +3,11 @@ This repository contains a collection of Advanced EOS concepts and examples.
 
 ## Examples
 **Topics covered**
-- [ ] Local Structs
+- [ ] Cryptography
 - [ ] Singletons
 - [X] Multi-Index Tables
-- [ ] Contract-to-Contract Communication
-- [ ] Delayed Transactions
+- [X] Contract-to-Contract Communication
+- [X] Delayed Transactions
 
 ## Getting Started
 #### Setting up a local environment

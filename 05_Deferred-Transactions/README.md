@@ -1,4 +1,4 @@
-# EOS Transactions - Deferred
+# EOS Deferred Transactions
 > Executing inline actions requires custom account permissions
 
 **Before we start...**
