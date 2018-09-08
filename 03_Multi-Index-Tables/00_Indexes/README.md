@@ -1,5 +1,3 @@
-
-
 # EOS Multi-Index Tables - Indexes
 ## Table Primary & Secondary Indexes
 
