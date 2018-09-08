@@ -42,8 +42,14 @@ tx.actions.emplace_back(
 );
 ```
 
+**Setting Delay**
+Now we have an action to execute, we can now set our delay. The `delay_sec` property controls how long to wait before the list of actions should execute. The value is in seconds and defaults to zero, which executes immediately after it's parent transaction completes. We will set this to our `uint64_t interval` property passed through the arguments.
+```
+tx.delay_sec = interval;
+```
+
 **Executing the transaction**
-Sending a deferred transaction requires both a `uint64_t sender_id` to reference the transaction, and an `account_name payer` which will provide the funds to store the delayed transaction until it's run.
+Now we're ready to publish the deferred transaction by sending it to the blockchain. Sending a deferred transaction requires both a `uint64_t sender_id` to reference the transaction, and an `account_name payer` which will provide the funds to store the delayed transaction until it's run.
 ```
 tx.send(sender_id, payer);
 ```
