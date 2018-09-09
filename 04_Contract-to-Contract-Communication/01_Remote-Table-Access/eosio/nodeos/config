@@ -1,0 +1,13 @@
+# Enable production on a stale chain, since a single-node test chain is pretty much always stale
+enable-stale-production = true
+# Enable block production with the testnet producers
+producer-name = eosio
+# Load the block producer plugin, so you can produce blocks
+plugin = eosio::producer_plugin
+# Wallet plugin
+plugin = eosio::wallet_api_plugin
+# As well as API and HTTP plugins
+plugin = eosio::chain_api_plugin
+plugin = eosio::http_plugin
+# This will be used by the validation step below, to view account history
+plugin = eosio::account_history_api_plugin
