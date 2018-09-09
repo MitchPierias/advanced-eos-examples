@@ -13,7 +13,7 @@ class timeline : eosio::contract {
 		void publish(const account_name username, const string& msg_str) {
 			// Limit access to user contract
 			require_auth(username);
-			// Publish to timeline
+			// Validate user
 			eosio::action(permission_level{_self, N(active)}, N(user), N(validate), std::make_tuple(username)).send();
 			// Initialize and store message
 			tweet_table tweets(_self, _self);
