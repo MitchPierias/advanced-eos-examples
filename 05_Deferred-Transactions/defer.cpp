@@ -12,20 +12,21 @@ class defer : eosio::contract {
 
 		using contract::contract;
 		// @abi action
-		void spam(const account_name sender, const account_name receiver, const string& msg_str, uint64_t interval, uint64_t index, uint32_t iterations) {
+		void spam(const account_name sender, const string& msg_str, uint64_t interval, uint64_t index, uint32_t iterations) {
 			if (index < iterations) {
-				// Store the message
-				save_message(sender, index, msg_str);
 				// Iteration loop
 				eosio::transaction tx;
 				tx.actions.emplace_back(
 					permission_level{_self, N(active)},
-					receiver,
+					_self,
 					N(spam),
-					std::make_tuple(sender, receiver, msg_str, interval, ++index, iterations)
+					std::make_tuple(sender, msg_str, interval, ++index, iterations)
 				);
 				tx.delay_sec = interval;
 				tx.send(index, sender);
+			} else {
+				// Store the message
+				save_message(sender, index, msg_str);
 			}
 		}
 
@@ -41,7 +42,7 @@ class defer : eosio::contract {
 
 		typedef multi_index<N(database), Data> data_index;
 
-		void save_message(const account_name sender, const uint64_t index, const string msg_str) {
+		void save_message(const account_name sender, const uint64_t index, const string& msg_str) {
 			data_index database(_self, sender);
 			// Fetch message
 			auto iter = database.find(index);
