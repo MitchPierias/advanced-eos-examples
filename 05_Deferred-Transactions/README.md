@@ -1,13 +1,13 @@
 # EOS Deferred Transactions
+**Before we start...**
 > Executing inline actions requires custom account permissions
 
-**Before we start...**
-Due to security reasons, the release version of EOS now uses the `eosio.code` permission of the contract invoking the inline action.
+Due to security reasons, the release version of EOS now requires the `eosio.code` permission on the contract invoking an inline action.
 
 **Modifying Account Permissions**
-We first need to modify the permissions of our `caller` account before we can invoke actions on our `server` contract. We're going to overwrite our `active` key on our caller account with the `eosio.code` permission and use this later to invoke our inline action. Let's use the `cleos set account permission` command to achieve this.
+We first need to modify the permissions of our `defer` account before we can schedule delayed transactions. We're going to overwrite our `active` key on our `defer` account with the `eosio.code` permission and use this later to invoke our inline action. Let's use the `cleos set account permission` command to achieve this.
 ```
-cleos set account permission caller active
+cleos set account permission defer active
 '{
   "threshold":1,
   "keys":[{
@@ -16,14 +16,16 @@ cleos set account permission caller active
   }],
   "accounts":[{
     "permission":{
-      "actor":"caller",
+      "actor":"defer",
       "permission":"eosio.code"
     },"weight":1
   }]
 }'
-owner -p caller@owner
+owner -p defer@owner
 ```
 ## Deferred Transactions
+> Technically there's no guarantee a deferred transaction will ever execute.
+
 Deferred transactions are actions which execute after the invoking transaction has completed executing. This means the invoking transaction is not notified and does not rollback if the deferred transaction asserts.
 
 **Creating an instance**
@@ -49,7 +51,7 @@ tx.delay_sec = interval;
 ```
 
 **Executing the transaction**
-Now we're ready to publish the deferred transaction by sending it to the blockchain. Sending a deferred transaction requires both a `uint64_t sender_id` to reference the transaction, and an `account_name payer` which will provide the funds to store the delayed transaction until it's run.
+Now we're ready to publish the deferred transaction by sending it to the blockchain. Sending a deferred transaction requires both a `uint64_t sender_id` to reference the transaction, and an `account_name payer` which will provide the RAM to store our delayed transaction until it's executed.
 ```
 tx.send(sender_id, payer);
 ```
