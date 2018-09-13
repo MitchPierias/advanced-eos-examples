@@ -1,13 +1,5 @@
 # EOS Examples
-This repository contains a collection of Advanced EOS concepts and examples.
-
-## Examples
-**Topics covered**
-- [ ] Cryptography
-- [ ] Singletons
-- [X] Multi-Index Tables
-- [X] Contract-to-Contract Communication
-- [X] Delayed Transactions
+This repository contains a collection of Advanced EOS concepts and examples that are typically not covered through any educational material.
 
 ## Getting Started
 #### Setting up a local environment
