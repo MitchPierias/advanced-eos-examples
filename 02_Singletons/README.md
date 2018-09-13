@@ -1,8 +1,8 @@
 # EOS Singletons
-> Singletons should be used to store contract state, or as a multi-index table alternative when only one row is required.
-
 **Persistence**
-We're going to use singleton's as a method to persist our contract state. Using a table for this would be a waste of resources given that we would only ever occupy one row, and assuming we don't want to maintain a history of our contract state.
+In this example we’re going to look at using singletons as a method to persist our contract state. Using a table for this would be a waste of resources given that we would only ever occupy one row, and assuming we don't want to maintain a history of our contract state.
+
+> Singletons should be used to store contract state, or as an alternative to multi-index tables when only one row is required.
 
 ## Defining the Singleton
 Our contracts configuration is a perfect example of data you might want to persist in a singleton. To start we will define our object struct and assign it to a type definition.
