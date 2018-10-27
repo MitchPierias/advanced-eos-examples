@@ -6,7 +6,7 @@ include <eosiolib/crypto.h>
 ```
 Notice the *.h* file extension in our `crypto.h` include? This means we're using a *C* library and not *C++*, so our methods will be expecting *C* type inputs. Now let's create an action which will take a string as input, hash our string and then print the result.
 
-We will start by making allocating a `checksum256` reference.
+We will start by allocating a `checksum256` reference.
 ```
 checksum256 sum{}
 ```
