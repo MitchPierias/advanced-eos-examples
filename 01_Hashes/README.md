@@ -1,20 +1,40 @@
 # EOS Hashes
-## Checksum Hashes
-We seem to use hashes everywhere when writing smart contracts... after all, they are the foundation of blockchains. But how do we go about creating a hash in EOS? Let's start by including a new library.
-```
-include <eosiolib/crypto.h>
-```
-Notice the *.h* file extension in our `crypto.h` include? This means we're using a *C* library and not *C++*, so our methods will be expecting *C* type inputs. Now let's create an action which will take a string as input, hash our string and then print the result.
+Using the EOS Crypto library.
+> We use hashes everywhere when writing smart contracts, but how do we go about hashing an input in EOS?
 
-We will start by allocating a `checksum256` reference.
+## Overview
+
+This source code is for the Advanced EOS Series of blog posts found at the following;
+[SteemIt](https://steemit.com/eos/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes) | [Medium](https://medium.com/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes-a251a8d371b8)
+
+## Usage
+* Note: This usage example assumes you've logged into your `cleos` wallet and created an account for the contract code.
+
+#### Deploy Contract
 ```
-checksum256 sum{}
+eosiocpp -o ./checksum.wasm ./checksum.cpp
+eosiocpp -g ./checksum.abi ./checksum.cpp
+cleos set contract checksum . ./checksum.wasm ./checksum.abi
 ```
-Then use our `eosio::sha256(CHARS,LENGTH,REFERENCE)` method.
+#### Calling Action
 ```
-sha256(const_cast<char*>(str.c_str()), str.size(), &sum);
+cleos push action checksum hash '["test string"]' -p checksum
 ```
-Now all that remains is printing the result.
-```
-printhex(&sum, sizeof(sum));
-```
+
+## ACTION NAME: hash
+* Source: checksum.cpp
+
+### Parameters
+Input parameters:
+
+* `str` (string to hash)
+
+Implied parameters: 
+
+* `account_name` (name of the party signing the contract)
+
+### Intent
+INTENT. Hashes a given input string and prints to console.
+
+### Term
+TERM. This Contract expires at the conclusion of code execution.
