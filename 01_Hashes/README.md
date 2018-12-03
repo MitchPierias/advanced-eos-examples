@@ -7,22 +7,22 @@ Using the EOS Crypto library.
 This source code is for the Advanced EOS Series of blog posts found at the following;
 [SteemIt](https://steemit.com/eos/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes) | [Medium](https://medium.com/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes-a251a8d371b8)
 
-## Usage
-* Note: This usage example assumes you've logged into your `cleos` wallet and created an account for the contract code.
-
-#### Deploy Contract
+## Deployment
+> This usage example assumes you've logged into your `cleos` wallet and created an account for the contract code.
 ```
 eosiocpp -o ./checksum.wasm ./checksum.cpp
 eosiocpp -g ./checksum.abi ./checksum.cpp
 cleos set contract checksum . ./checksum.wasm ./checksum.abi
 ```
-#### Calling Action
+
+## Usage
 ```
 cleos push action checksum hash '["test string"]' -p checksum
 ```
 
-## ACTION NAME: hash
-* Source: checksum.cpp
+## checksum::hash
+*Source: checksum.cpp*
+Hashes a given input string and prints to console.
 
 ### Parameters
 Input parameters:
@@ -32,9 +32,3 @@ Input parameters:
 Implied parameters: 
 
 * `account_name` (name of the party signing the contract)
-
-### Intent
-INTENT. Hashes a given input string and prints to console.
-
-### Term
-TERM. This Contract expires at the conclusion of code execution.
