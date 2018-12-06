@@ -11,7 +11,9 @@ class singletons : eosio::contract {
 
 	public:
 
-		explicit singletons(action_name self) : contract(self), config(_self, _self) {}
+		using contract::contract;
+
+		singletons(action_name self) : contract(self), config(_self, _self) {}
 		// @abi action
 		void setclosed(bool isClosed) {
 			auto state = config.get();
