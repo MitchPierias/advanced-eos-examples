@@ -40,7 +40,7 @@ class crypto : eosio::contract {
 		 * @return result <checksum256> Hash digest
 		 * @private
 		 */
-		checksum256 create_hash(const string& str) {
+		static checksum256 create_hash(const string& str) {
 			// Hash the string to a checksum
 			checksum256 result{};
 			sha256(const_cast<char*>(str.c_str()), str.size(), &sum);
@@ -57,7 +57,7 @@ class crypto : eosio::contract {
 		 * @return result <std::string> Hexadecimal string
 		 * @private
 		 */
-		string to_hex(const CharT* data, uint32_t length) {
+		static string to_hex(const CharT* data, uint32_t length) {
 			// Construct variables
 			string result;
 			const char* hex_chars = "0123456789abcdef";

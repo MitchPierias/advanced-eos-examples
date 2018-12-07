@@ -11,7 +11,9 @@ class singletons : eosio::contract {
 
 	public:
 
-		explicit singletons(action_name self) : contract(self), config(_self, _self) {}
+		using contract::contract;
+
+		singletons(action_name self) : contract(self), config(_self, _self) {}
 		// @abi action
 		void setclosed(bool isClosed) {
 			auto state = config.get();
@@ -27,20 +29,20 @@ class singletons : eosio::contract {
 		// @abi action
 		void setchars(uint32_t char_count) {
 			auto state = config.get();
-			state.chars = char_count;
+			state.char_count = char_count;
 			config.set(state, _self);
 		}
 		// @abi action
 		void getchars() {
 			auto state = config.get();
-			print(state.chars);
+			print(state.char_count);
 		}
 
 	private:
 
 		struct Config {
 			bool		closed = false;
-			uint32_t	chars = 144;
+			uint32_t	char_count = 144;
 		};
 
 		typedef singleton<N(settings), Config> settings_table;

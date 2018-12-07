@@ -1,14 +1,11 @@
 # EOS Hashes
-Using the EOS Crypto library.
-> We use hashes everywhere when writing smart contracts, but how do we go about hashing an input in EOS?
-
 ## Overview
-
-This source code is for the Advanced EOS Series of blog posts found at the following;
+### Using the EOS Crypto library.
+This source code is for the Advanced EOS Series of blog posts found at;
 [SteemIt](https://steemit.com/eos/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes) | [Medium](https://medium.com/@mitchpierias/advanced-eos-series-part-1-cryptographic-hashes-a251a8d371b8)
 
 ## Deployment
-> This usage example assumes you've logged into your `cleos` wallet and created an account for the contract code.
+> Assuming you've logged into your `cleos` wallet and created an account for the contract code.
 ```
 eosiocpp -o ./checksum.wasm ./checksum.cpp
 eosiocpp -g ./checksum.abi ./checksum.cpp
@@ -22,6 +19,7 @@ cleos push action checksum hash '["test string"]' -p checksum
 
 ## checksum::hash
 *Source: checksum.cpp*
+
 Hashes a given input string and prints to console.
 
 ### Parameters
