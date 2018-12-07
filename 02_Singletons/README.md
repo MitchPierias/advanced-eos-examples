@@ -13,27 +13,16 @@ cleos set contract singletons . ./singletons.wasm ./singletons.abi
 ```
 
 ## Usage
-Getting the `closed` state;
-```
-cleos push action singletons getclosed '[]' -p singletons
 Setting the `closed` state;
 ```
 cleos push action singletons setclosed '[true]' -p singletons
 ```
-Getting the `char_count` state;
-```
-cleos push action singletons getchars '[]' -p singletons
-Setting the `char_count` state;
-```
-cleos push action singletons setchars '[172]' -p singletons
-```
-
-## singletons::setclosed
+### singletons::setclosed
 *Source: singletons.cpp*
 
 Sets the `closed` state of the contract.
 
-### Parameters
+#### Parameters
 Input parameters:
 
 * `isClosed` (New closed state)
@@ -42,22 +31,47 @@ Implied parameters:
 
 * `account_name` (name of the party signing the contract)
 
-## singletons::getclosed
+
+Getting the `closed` state;
+```
+cleos push action singletons getclosed '[]' -p singletons
+```
+### singletons::getclosed
 *Source: singletons.cpp*
 
 Gets the `closed` state of the contract.
 
-### Parameters
+#### Parameters
 Implied parameters: 
 
 * `account_name` (name of the party signing the contract)
 
-## singletons::setchars
+
+Getting the `char_count` state;
+```
+cleos push action singletons getchars '[]' -p singletons
+```
+### singletons::getchars
+*Source: singletons.cpp*
+
+Gets the `char_count` of the contract.
+
+#### Parameters
+Implied parameters: 
+
+* `account_name` (name of the party signing the contract)
+
+
+Setting the `char_count` state;
+```
+cleos push action singletons setchars '[172]' -p singletons
+```
+### singletons::setchars
 *Source: singletons.cpp*
 
 Sets the `char_count` of the contract.
 
-### Parameters
+#### Parameters
 Input parameters:
 
 * `char_count` (New character count)
@@ -66,12 +80,3 @@ Implied parameters:
 
 * `account_name` (name of the party signing the contract)
 
-## singletons::getchars
-*Source: singletons.cpp*
-
-Gets the `char_count` of the contract.
-
-### Parameters
-Implied parameters: 
-
-* `account_name` (name of the party signing the contract)
