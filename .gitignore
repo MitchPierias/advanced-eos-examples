@@ -1,6 +1,4 @@
+# Generated Files
 *.abi
 *.wasm
 *.wast
-*.sh
-.gitignore
-.gitattributes
