@@ -11,9 +11,10 @@ class timeline : public eosio::contract {
 
 		using contract::contract;
 		// Constructor
-		timeline(action_name self) : contract(self), tweets(_self, _self) {}
+		timeline(action_name self) : contract(self) {}
 		// @abi action
-		void post(const account_name username, uint64_t index, const string& msg_str) {
+		void post(const account_name username, uint64_t index const string& msg_str) {
+			tweet_table tweets(_self, _self);
 			// Create and store tweet
 			tweets.emplace(username, [&](auto& tweet) {
 				tweet.id = index;
@@ -23,14 +24,16 @@ class timeline : public eosio::contract {
 		}
 		// @abi action
 		void get(uint64_t index) {
+			tweet_table tweets(_self, _self);
 			// Get tweet at id
 			auto tweet = tweets.get(index);
 			print(tweet.msg);
 		}
 		// @abi action
 		void find(const account_name account) {
+			tweet_table tweets(_self, _self);
 			// Fetch tweets and display
-			auto author_index = tweets.get_index<N(byowner)>();
+			auto author_index = tweets.get_index<N(byauthor)>();
 			auto iter = author_index.lower_bound(account);
 			while (iter != author_index.end()) {
 				print(iter->msg);
@@ -52,7 +55,6 @@ class timeline : public eosio::contract {
 		};
 
 		typedef multi_index<N(tweets), Tweet, indexed_by<N(byauthor), const_mem_fun<Tweet, uint64_t, &Tweet::get_author>>> tweet_table;
-		tweet_table tweets;
 };
 
 EOSIO_ABI(timeline, (post)(get)(find));
