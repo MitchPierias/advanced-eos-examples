@@ -30,7 +30,7 @@ class timeline : public eosio::contract {
 			print(tweet.msg);
 		}
 		// @abi action
-		void find(const account_name account) {
+		void inventory(const account_name account) {
 			tweet_table tweets(_self, _self);
 			// Fetch tweets and display
 			auto author_index = tweets.get_index<N(byauthor)>();
@@ -57,4 +57,4 @@ class timeline : public eosio::contract {
 		typedef multi_index<N(tweets), Tweet, indexed_by<N(byauthor), const_mem_fun<Tweet, uint64_t, &Tweet::get_author>>> tweet_table;
 };
 
-EOSIO_ABI(timeline, (post)(get)(find));
+EOSIO_ABI(timeline, (post)(get)(inventory));
