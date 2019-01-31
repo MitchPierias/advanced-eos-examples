@@ -25,7 +25,7 @@ class crypto : eosio::contract {
 			// Hash the given string
 			checksum256 hashed = create_hash(str);
 			// Convert output to hexadecimal string
-			string result = to_hex(hashed);
+			string result = to_hex(hashed, sizeof(hashed));
 			// Print result
 			print(result);
 		}
@@ -43,7 +43,7 @@ class crypto : eosio::contract {
 		static checksum256 create_hash(const string& str) {
 			// Hash the string to a checksum
 			checksum256 result{};
-			sha256(const_cast<char*>(str.c_str()), str.size(), &sum);
+			sha256(const_cast<char*>(str.c_str()), str.size(), &result);
 			// Return resulting digest
 			return result;
 		}
