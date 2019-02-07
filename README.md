@@ -1,23 +1,35 @@
 # EOS Examples
 This repository contains a collection of Advanced EOS concepts and examples that are typically not covered through any educational material.
 
+> A copy of my nodeos configuration file can be [found here](https://gist.github.com/MitchPierias/647596cacb3d33abc4f70f58bfd174a2)
+
+This repository contains the project source files for the following 'Advanced EOS Series' blog posts:
+- Hashes and Cyrptography
+- Singletons
+- Secondary Indexes
+- Table Uniqueness
+- One-to-many Table Relationships
+
 ## Getting Started
+
+Prerequisite
 #### Setting up a local environment
 > Before we can run any examples, we need somewhere to deploy them. Let's setup a local EOS block producer to deploy and test our contracts.
 
-Clone EOS recursively from the [GitHub](https://github.com/EOSIO/eos) Repository.
+Clone the EOS project recursively from [this GitHub repository](https://github.com/EOSIO/eos).
 ```
 git clone https://github.com/EOSIO/eos.git --recursive
 ```
-Enter the `eos` directory and build.
+Navigate into the `eos` directory and run the build script:
 ```
 cd eos
 ./eosio_build.sh
 ```
-Start a clean `nodeos` server locally. The `--delete-all-blocks` flag will clear any existing blocks and accounts.
+Run the following commands to start a clean `nodeos` instance serving locally. Using the `--delete-all-blocks` flag clears any existing blocks, databases and accounts.
 ```
 nodeos -e -p eosio --plugin eosio::chain_api_plugin --plugin eosio::history_api_plugin --delete-all-blocks
 ```
+
 #### Creating deployment accounts
 If your starting fresh, you'll need to create a wallet. Open another terminal and run the command
 ```
