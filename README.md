@@ -4,16 +4,24 @@ This repository contains a collection of Advanced EOS concepts and examples that
 > A copy of my nodeos configuration file can be [found here](https://gist.github.com/MitchPierias/647596cacb3d33abc4f70f58bfd174a2)
 
 This repository contains the project source files for the following 'Advanced EOS Series' blog posts:
-- Hashes and Cyrptography
-- Singletons
-- Secondary Indexes
-- Table Uniqueness
-- One-to-many Table Relationships
+
+1. [Cryptographic Hashes](https://medium.com/coinmonks/advanced-eos-series-part-1-cryptographic-hashes-a251a8d371b8)
+2. [Singletons](https://medium.com/coinmonks/advanced-eos-series-part-2-singletons-9e903772f71c)
+3. [Secondary Indexes](https://medium.com/coinmonks/advanced-eos-series-part-3-secondary-indexes-1798f339cbb8)
+4. [Table Index Uniqueness](https://medium.com/coinmonks/advanced-eos-series-part-4-table-uniqueness-835843a207fc)
+5. [One-to-many Table Relationships](https://medium.com/coinmonks/advanced-eos-series-part-5-one-to-many-relationships-42d2e075e05d)
+6. [Contract-to-contract Communication](https://medium.com/coinmonks/advanced-eos-series-part-6-contract-to-contract-communication-ab352a8b60aa)
+7. Remote Table Access
+8. Deferred Transactions
+9. The Dispatcher Extension
+10. Token Transfers
 
 ## Getting Started
+### Prerequisites
+- EOSIO
+- C++
 
-Prerequisite
-#### Setting up a local environment
+### Local EOSIO Environment
 > Before we can run any examples, we need somewhere to deploy them. Let's setup a local EOS block producer to deploy and test our contracts.
 
 Clone the EOS project recursively from [this GitHub repository](https://github.com/EOSIO/eos).
