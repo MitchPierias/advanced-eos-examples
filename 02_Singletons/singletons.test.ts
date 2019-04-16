@@ -1,15 +1,8 @@
-import { Account, AccountManager, ContractDeployer, assertRowsEqual } from 'lamington';
+import { ContractDeployer, assertRowsEqual } from 'lamington';
 import { Singletons } from './singletons';
 
 describe('singletons', function() {
-	let account1: Account;
-	let account2: Account;
-	let account3: Account;
 	let contract: Singletons;
-
-	before(async function() {
-		[account1, account2, account3] = await AccountManager.createAccounts(3);
-	});
 
 	beforeEach(async function() {
 		contract = await ContractDeployer.deployClean<Singletons>('02_Singletons/singletons');
