@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"attach": "docker exec -it lamington bash",
+		"build": "lamington build",
 		"logs": "npm run logs:all | grep -vE \"^info |^warn |^error |^debug |.+keosd.+launched\"",
 		"logs:all": "docker logs lamington 2>&1 >/dev/null",
 		"start": "lamington start eos",
