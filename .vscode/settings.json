@@ -2,6 +2,21 @@
     "files.associations": {
         "string": "cpp",
         "ios": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "array": "cpp",
+        "iterator": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp",
+        "__tuple": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "initializer_list": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "utility": "cpp"
     }
 }
