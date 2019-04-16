@@ -14,7 +14,6 @@ describe('uniqueness', function() {
 	});
 
 	it('should have correct defaults', async function() {
-		// Should default to false after init.
 		await assertRowsEqual(contract.items(), []);
 	});
 
