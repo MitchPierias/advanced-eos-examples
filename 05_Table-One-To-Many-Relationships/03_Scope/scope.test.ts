@@ -1,7 +1,7 @@
 import { Account, AccountManager, ContractDeployer, assertRowsEqual } from 'lamington';
 import { Scope } from './scope';
 
-describe.only('scope', function() {
+describe('scope', function() {
 	let account1: Account;
 	let account2: Account;
 	let contract: Scope;
@@ -26,7 +26,7 @@ describe.only('scope', function() {
 		await assertRowsEqual(contract.players(), [{ account: account1.name }]);
 	});
 
-	it.only('should allow an item to be added', async function() {
+	it('should allow an item to be added', async function() {
 		await contract.signup(account1.name, { from: account1 });
 		await contract.signup(account2.name, { from: account2 });
 		await assertRowsEqual(contract.players(), [
