@@ -1,7 +1,7 @@
 import { Account, AccountManager, ContractDeployer, assertRowsEqual } from 'lamington';
 import { Indexes } from './indexes';
 
-describe('vectors', function() {
+describe('indexes', function() {
 	let account1: Account;
 	let contract: Indexes;
 

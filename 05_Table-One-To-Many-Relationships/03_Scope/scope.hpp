@@ -1,39 +1,32 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/print.h>
+#include <eosio/eosio.hpp>
 #include <string>
 
 using namespace eosio;
 using namespace std;
 
-class scope : contract {
+class[[eosio::contract]] scope : public contract
+{
+  public:
+	using contract::contract;
 
-	public:
+	[[eosio::action]] void signup(const name account);
+	[[eosio::action]] void add(const name account, string itemName);
+	[[eosio::action]] void get(const name account);
 
-		explicit scope(action_name self) : contract(self) {}
-		// @abi action
-		void signup(const name account);
-		// @abi action
-		void add(const name account, string itemName);
-		// @abi action
-		void get(const name account);
+  private:
+	struct [[eosio::table]] Profile
+	{
+		name account;
+		auto primary_key() const { return account.value; };
+	};
 
-	private:
-		// @abi table players i64
-		struct Profile {
-		    name        	account;
-		    auto primary_key() const { return account; };
-		    EOSLIB_SERIALIZE(Profile, (account));
-		};
-		// @abi table items i64
-		struct Item {
-		    uint64_t    	id;
-		    string			name;
-		    auto primary_key() const { return id; };
-		    EOSLIB_SERIALIZE(Item, (id)(name));
-		};
+	struct [[eosio::table]] Item
+	{
+		uint64_t id;
+		string name;
+		auto primary_key() const { return id; };
+	};
 
-		typedef multi_index<N(players), Profile> profile_table;
-		typedef multi_index<N(items), Item> item_table;
+	typedef multi_index<"players"_n, Profile> profile_table;
+	typedef multi_index<"items"_n, Item> item_table;
 };
-
-EOSIO_ABI(scope, (signup)(add)(get));
