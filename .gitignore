@@ -1,4 +1,2 @@
-# Generated Files
-*.abi
-*.wasm
-*.wast
+node_modules
+

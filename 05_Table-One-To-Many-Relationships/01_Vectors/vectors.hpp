@@ -1,37 +1,35 @@
-#include <eosiolib/eosio.hpp>
+#include <eosio/eosio.hpp>
 #include <string>
 
 using namespace eosio;
 using namespace std;
 
-class vectors : contract {
+class[[eosio::contract("vectors")]] vectors : public contract
+{
 
-	public:
+  public:
+	using contract::contract;
 
-		explicit vectors(action_name self) : contract(self) {}
-		// @abi action
-		void signup(const name account);
-		// @abi action
-		void add(const name account, string name);
+	[[eosio::action]] void signup(const name account);
+	[[eosio::action]] void add(const name account, string name);
 
-	private:
-		// @abi table players i64
-		struct Profile {
-		    name        		account;
-		    vector<uint64_t>	items;
-		    auto primary_key() const { return account; };
-		    EOSLIB_SERIALIZE(Profile, (account)(items));
-		};
-		// @abi table items i64
-		struct Item {
-		    uint64_t    		id;
-		    string				name;
-		    auto primary_key() const { return id; };
-		    EOSLIB_SERIALIZE(Item, (id)(name));
-		};
+  private:
+	struct [[eosio::table]] Profile
+	{
+		name account;
+		vector<uint64_t> items;
 
-		typedef multi_index<N(players), Profile> profile_table;
-		typedef multi_index<N(items), Item> item_table;
+		uint64_t primary_key() const { return account.value; };
+	};
+
+	struct [[eosio::table]] Item
+	{
+		uint64_t id;
+		string name;
+
+		uint64_t primary_key() const { return id; };
+	};
+
+	typedef multi_index<"players"_n, Profile> profile_table;
+	typedef multi_index<"items"_n, Item> item_table;
 };
-
-EOSIO_ABI(vectors, (signup)(add));
