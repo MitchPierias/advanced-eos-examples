@@ -1,4 +1,4 @@
-import { Account, AccountManager, ContractDeployer, assertRowsEqual } from 'lamington';
+import { Account, AccountManager, ContractDeployer, assertRowsEqual, assertRowsEqualLazy } from 'lamington';
 import { Scope } from './scope';
 
 describe('scope', function() {
@@ -29,7 +29,7 @@ describe('scope', function() {
 	it('should allow an item to be added', async function() {
 		await contract.signup(account1.name, { from: account1 });
 		await contract.signup(account2.name, { from: account2 });
-		await assertRowsEqual(contract.players(), [
+		await assertRowsEqualLazy(contract.players(), [
 			{ account: account1.name },
 			{ account: account2.name },
 		]);
@@ -43,9 +43,11 @@ describe('scope', function() {
 		await contract.add(account2.name, 'And a third item', { from: account2 });
 
 		// Notice how item 0 from above is not in this list and the id starts over? Different scopes.
-		await assertRowsEqual(contract.items(account2.name), [
-			{ id: '0', name: 'A second item' },
-			{ id: '1', name: 'And a third item' },
+		await assertRowsEqualLazy(contract.items(account2.name), [
+			// @ts-ignore
+			{ id: 0, name: 'A second item' },
+			// @ts-ignore
+			{ id: 1, name: 'And a third item' },
 		]);
-	});
+	}).timeout(5000)
 });
