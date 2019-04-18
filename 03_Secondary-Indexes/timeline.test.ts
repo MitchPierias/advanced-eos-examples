@@ -4,7 +4,7 @@ import {
 	ContractDeployer,
 	assertRowsEqual,
 	nextBlock,
-	assertEOSException,
+	assertEOSAssert,
 } from 'lamington';
 import { Timeline } from './timeline';
 
@@ -35,7 +35,7 @@ describe('timeline', function() {
 
 	it('should successfully call get', async function() {
 		// Before there's a tweet we're not going to find the record.
-		await assertEOSException(contract.get('1'));
+		await assertEOSAssert(contract.get('1'));
 
 		// But it should find the record after we post.
 		await contract.post(account1.name, '1', 'This is a test.', { from: account1 });
