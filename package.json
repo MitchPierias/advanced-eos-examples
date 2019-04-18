@@ -1,8 +1,8 @@
 {
 	"name": "advanced-eos-examples",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Advanced EOS smart contract examples with tests and usage from EOSJS",
-	"main": "index.js",
+	"main": "",
 	"scripts": {
 		"attach": "docker exec -it lamington bash",
 		"build": "lamington build",
@@ -16,7 +16,7 @@
 		"type": "git",
 		"url": "git+https://github.com/MitchPierias/Advanced-EOS-Examples.git"
 	},
-	"author": "Mitch Pierias",
+	"author": "Mitch Pierias & Kevin Brown",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/MitchPierias/Advanced-EOS-Examples/issues"
