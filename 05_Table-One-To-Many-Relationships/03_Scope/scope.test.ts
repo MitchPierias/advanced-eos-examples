@@ -37,16 +37,14 @@ describe('scope', function() {
 		// Each scope has its own "table" of sorts. This ensures that items that are added for each person are
 		// kept in separate scopes, e.g. separate tables.
 		await contract.add(account1.name, 'This is an item', { from: account1 });
-		await assertRowsEqual(contract.items(account1.name), [{ id: '0', name: 'This is an item' }]);
+		await assertRowsEqual(contract.items(account1.name), [{ id: 0, name: 'This is an item' }]);
 
 		await contract.add(account2.name, 'A second item', { from: account2 });
 		await contract.add(account2.name, 'And a third item', { from: account2 });
 
 		// Notice how item 0 from above is not in this list and the id starts over? Different scopes.
 		await assertRowsEqualLazy(contract.items(account2.name), [
-			// @ts-ignore
 			{ id: 0, name: 'A second item' },
-			// @ts-ignore
 			{ id: 1, name: 'And a third item' },
 		]);
 	}).timeout(5000)

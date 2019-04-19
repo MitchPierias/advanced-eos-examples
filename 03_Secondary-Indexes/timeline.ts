@@ -7,16 +7,16 @@
 import { Account, Contract, TableRowsResult } from 'lamington';
 
 export interface TimelineTweets {
-	id: string
-	author: string
+	id: number
+	author: string|number
 	msg: string
 	flagged: boolean
 }
 
 export interface Timeline extends Contract {
-	get(id: string, options?: { from?: Account }): Promise<any>;
-	inventory(account: string, options?: { from?: Account }): Promise<any>;
-	post(username: string, id: string, msg_str: string, options?: { from?: Account }): Promise<any>;
+	get(id: number, options?: { from?: Account }): Promise<any>;
+	inventory(account: string|number, options?: { from?: Account }): Promise<any>;
+	post(username: string|number, id: number, msg_str: string, options?: { from?: Account }): Promise<any>;
 	
 	tweets(scope?: string): Promise<TableRowsResult<TimelineTweets>>
 }
