@@ -7,6 +7,10 @@
 import { Account, Contract, TableRowsResult } from 'lamington';
 
 // Table row types
+export interface TimelineSettings {
+	user_contract: string;
+}
+
 export interface TimelineTweets {
 	id: string;
 	author: string;
@@ -16,11 +20,12 @@ export interface TimelineTweets {
 
 export interface Timeline extends Contract {
 	// Actions
-	get(id: string, options?: { from?: Account }): Promise<any>;
-	inventory(account: string, options?: { from?: Account }): Promise<any>;
-	post(username: string, id: string, msg_str: string, options?: { from?: Account }): Promise<any>;
+	publish(username: string, msg_str: string, options?: { from?: Account }): Promise<any>;
+	remove(id: string, options?: { from?: Account }): Promise<any>;
+	setuser(user_contract_name: string, options?: { from?: Account }): Promise<any>;
 	
 	// Tables
+	settings(scope?: string): Promise<TableRowsResult<TimelineSettings>>;
 	tweets(scope?: string): Promise<TableRowsResult<TimelineTweets>>;
 }
 

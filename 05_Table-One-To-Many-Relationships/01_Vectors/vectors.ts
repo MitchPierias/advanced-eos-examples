@@ -6,21 +6,24 @@
 
 import { Account, Contract, TableRowsResult } from 'lamington';
 
+// Table row types
 export interface VectorsItems {
-	id: number
-	name: string
+	id: string;
+	name: string;
 }
 
 export interface VectorsPlayers {
-	account: string|number
-	items: Array<number>
+	account: string;
+	items: Array<string>;
 }
 
 export interface Vectors extends Contract {
-	add(account: string|number, name: string, options?: { from?: Account }): Promise<any>;
-	signup(account: string|number, options?: { from?: Account }): Promise<any>;
+	// Actions
+	add(account: string, name: string, options?: { from?: Account }): Promise<any>;
+	signup(account: string, options?: { from?: Account }): Promise<any>;
 	
-	items(scope?: string): Promise<TableRowsResult<VectorsItems>>
-	players(scope?: string): Promise<TableRowsResult<VectorsPlayers>>
+	// Tables
+	items(scope?: string): Promise<TableRowsResult<VectorsItems>>;
+	players(scope?: string): Promise<TableRowsResult<VectorsPlayers>>;
 }
 
