@@ -31,7 +31,7 @@ describe('indexes', function() {
 
 		await contract.additem(account1.name, 'This is an item', { from: account1 });
 		await assertRowsEqual(contract.items(), [
-			{ id: '0', owner: account1.name, name: 'This is an item' },
+			{ id: 0, owner: account1.name, name: 'This is an item' },
 		]);
 		await assertRowsEqual(contract.players(), [{ account: account1.name }]);
 	});
