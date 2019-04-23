@@ -50,8 +50,10 @@ These examples expect a moderate understanding of the following languages
 | [Lamington](https://github.com/CoinageCrypto/lamingtongton)     | 1       |
 
 ## Contributors
-* [Mitch Pierias](https://github.com/MitchPierias)
-* [Kevin Brown](https://github.com/thekevinbrown)
+
+[Mitch Pierias](https://github.com/MitchPierias), Creator & Developer
+
+[Kevin Brown](https://github.com/thekevinbrown), Developer
 
 ## Special Thanks
 A special thanks to [Kevin Brown](https://github.com/thekevinbrown) who volunteered to completely rewrite the series to conform with the latest CDT release version 1.6. Additionaly, Kevin developed and implemented a Truffle inspired tool suite called [Lamington](https://github.com/CoinageCrypto/lamington) which simplifies deployment and testing into one command.
