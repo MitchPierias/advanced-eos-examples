@@ -27,10 +27,9 @@ describe.only('timeline', function() {
 		);
 
 		await timelineContract.setuser(userContract.account.name);
-
 		// And our user needs to grant eosio.code permission to the timeline contract
 		// so it can dispatch inline actions on their behalf.
-		await AccountManager.addCodePermission(account1, timelineContract);
+		await AccountManager.addCodePermission(timelineContract.account);
 	});
 
 	it('should have correct defaults', async function() {
@@ -56,7 +55,7 @@ describe.only('timeline', function() {
 
 		await assertRowsEqual(timelineContract.tweets(), [
 			{
-				id: '0',
+				id: 0,
 				author: account1.name,
 				msg: 'This is a test',
 				flagged: false,
