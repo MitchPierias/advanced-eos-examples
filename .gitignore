@@ -6,3 +6,9 @@ node_modules/
 
 # Generated Typescript files
 *.ts
+
+# VSCode
+.vscode/
+
+# Apple
+.DS_Store
