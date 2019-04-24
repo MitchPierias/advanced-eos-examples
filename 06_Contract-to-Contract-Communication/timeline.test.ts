@@ -8,7 +8,7 @@ import {
 import { Timeline } from './timeline';
 import { User } from './user';
 
-describe.only('timeline', function() {
+describe('timeline', function() {
 	let account1: Account;
 	let timelineContract: Timeline;
 	let userContract: User;
@@ -18,11 +18,11 @@ describe.only('timeline', function() {
 	});
 
 	beforeEach(async function() {
-		timelineContract = await ContractDeployer.deployClean<Timeline>(
+		timelineContract = await ContractDeployer.deploy<Timeline>(
 			'06_Contract-to-Contract-Communication/timeline'
 		);
 
-		userContract = await ContractDeployer.deployClean<User>(
+		userContract = await ContractDeployer.deploy<User>(
 			'06_Contract-to-Contract-Communication/user'
 		);
 

@@ -10,7 +10,7 @@ describe('uniqueness', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Uniqueness>('04_Table-Uniqueness/uniqueness');
+		contract = await ContractDeployer.deploy<Uniqueness>('04_Table-Uniqueness/uniqueness');
 	});
 
 	it('should have correct defaults', async function() {

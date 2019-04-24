@@ -5,7 +5,7 @@ describe('singletons', function() {
 	let contract: Singletons;
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Singletons>('02_Singletons/singletons');
+		contract = await ContractDeployer.deploy<Singletons>('02_Singletons/singletons');
 		await contract.init();
 	});
 
@@ -25,7 +25,7 @@ describe('singletons', function() {
 	});
 
 	it('should allow setting of chars', async function() {
-		await contract.setchars('500');
+		await contract.setchars(500);
 		await assertRowsEqualStrict(contract.settings(), [{ closed: false, char_count: 500 }]);
 	});
 });

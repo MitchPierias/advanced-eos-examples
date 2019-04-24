@@ -17,7 +17,7 @@ describe('timeline', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Timeline>('03_Secondary-Indexes/timeline');
+		contract = await ContractDeployer.deploy<Timeline>('03_Secondary-Indexes/timeline');
 	});
 
 	it('should have correct defaults', async function() {

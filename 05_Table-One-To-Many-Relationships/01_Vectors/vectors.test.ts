@@ -10,7 +10,7 @@ describe('vectors', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Vectors>(
+		contract = await ContractDeployer.deploy<Vectors>(
 			'05_Table-One-To-Many-Relationships/01_Vectors/vectors'
 		);
 	});

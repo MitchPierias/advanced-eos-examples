@@ -11,7 +11,7 @@ describe('scope', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Scope>(
+		contract = await ContractDeployer.deploy<Scope>(
 			'05_Table-One-To-Many-Relationships/03_Scope/scope'
 		);
 	});

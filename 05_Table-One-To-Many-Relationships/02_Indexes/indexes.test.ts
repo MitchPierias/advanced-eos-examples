@@ -10,7 +10,7 @@ describe('indexes', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Indexes>(
+		contract = await ContractDeployer.deploy<Indexes>(
 			'05_Table-One-To-Many-Relationships/02_Indexes/indexes'
 		);
 	});
