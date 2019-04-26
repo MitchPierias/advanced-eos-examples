@@ -1,0 +1,7 @@
+{
+    "outDir":"dist",
+    "keepAlive":true,
+    "exclude": [
+        "00_ABI-Extensions"
+    ]
+}
