@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Lamington Test",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": ["test"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"timeout": 60000
+		}
+	]
+}
