@@ -1,2 +1,14 @@
-node_modules
+# Node
+node_modules/
 
+# Lamgington
+.lamington/
+
+# Generated Typescript files
+*.ts
+
+# VSCode
+.vscode/
+
+# Apple
+.DS_Store

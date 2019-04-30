@@ -8,7 +8,7 @@ import {
 import { Timeline } from './timeline';
 import { User } from './user';
 
-describe.only('timeline', function() {
+describe('timeline', function() {
 	let account1: Account;
 	let timelineContract: Timeline;
 	let userContract: User;
@@ -18,19 +18,18 @@ describe.only('timeline', function() {
 	});
 
 	beforeEach(async function() {
-		timelineContract = await ContractDeployer.deployClean<Timeline>(
+		timelineContract = await ContractDeployer.deploy<Timeline>(
 			'06_Contract-to-Contract-Communication/timeline'
 		);
 
-		userContract = await ContractDeployer.deployClean<User>(
+		userContract = await ContractDeployer.deploy<User>(
 			'06_Contract-to-Contract-Communication/user'
 		);
 
 		await timelineContract.setuser(userContract.account.name);
-
 		// And our user needs to grant eosio.code permission to the timeline contract
 		// so it can dispatch inline actions on their behalf.
-		await AccountManager.addCodePermission(account1, timelineContract);
+		await AccountManager.addCodePermission(timelineContract.account);
 	});
 
 	it('should have correct defaults', async function() {
@@ -56,7 +55,7 @@ describe.only('timeline', function() {
 
 		await assertRowsEqual(timelineContract.tweets(), [
 			{
-				id: '0',
+				id: 0,
 				author: account1.name,
 				msg: 'This is a test',
 				flagged: false,

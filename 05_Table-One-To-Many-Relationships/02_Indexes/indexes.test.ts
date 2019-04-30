@@ -10,7 +10,7 @@ describe('indexes', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Indexes>(
+		contract = await ContractDeployer.deploy<Indexes>(
 			'05_Table-One-To-Many-Relationships/02_Indexes/indexes'
 		);
 	});
@@ -31,7 +31,7 @@ describe('indexes', function() {
 
 		await contract.additem(account1.name, 'This is an item', { from: account1 });
 		await assertRowsEqual(contract.items(), [
-			{ id: '0', owner: account1.name, name: 'This is an item' },
+			{ id: 0, owner: account1.name, name: 'This is an item' },
 		]);
 		await assertRowsEqual(contract.players(), [{ account: account1.name }]);
 	});

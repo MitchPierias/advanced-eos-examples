@@ -10,7 +10,7 @@ describe('user', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<User>(
+		contract = await ContractDeployer.deploy<User>(
 			'06_Contract-to-Contract-Communication/user'
 		);
 	});

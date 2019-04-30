@@ -22,9 +22,7 @@ class[[eosio::contract]] user : public eosio::contract
 		});
 	}
 
-		[[eosio::action]] void
-		validate(const name username)
-	{
+	[[eosio::action]] void validate(const name username) {
 		// Fetch our user
 		profile_table profiles(_self, _self.value);
 		auto results = profiles.find(username.value);
@@ -37,8 +35,7 @@ class[[eosio::contract]] user : public eosio::contract
 	// validate_action from timeline.cpp in order to call this.
 	using validate_action = action_wrapper<"validate"_n, &user::validate>;
 
-	[[eosio::action]] void
-	approve(const name username, bool isApproved) {
+	[[eosio::action]] void approve(const name username, bool isApproved) {
 		// This is an administrative action that only we can take.
 		require_auth(_self);
 
@@ -50,9 +47,7 @@ class[[eosio::contract]] user : public eosio::contract
 		});
 	}
 
-		[[eosio::action]] void
-		flag(const name username, bool isFlagged)
-	{
+	[[eosio::action]] void flag(const name username, bool isFlagged) {
 		// This is an administrative action that only we can take.
 		require_auth(_self);
 
@@ -64,8 +59,7 @@ class[[eosio::contract]] user : public eosio::contract
 		});
 	}
 
-	struct [[eosio::table]] Profile
-	{
+	struct [[eosio::table]] Profile {
 		name user_name;
 		bool approved = false;
 		bool flagged = false;

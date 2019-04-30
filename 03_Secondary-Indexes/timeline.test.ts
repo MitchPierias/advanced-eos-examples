@@ -17,7 +17,7 @@ describe('timeline', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Timeline>('03_Secondary-Indexes/timeline');
+		contract = await ContractDeployer.deploy<Timeline>('03_Secondary-Indexes/timeline');
 	});
 
 	it('should have correct defaults', async function() {
@@ -27,19 +27,19 @@ describe('timeline', function() {
 
 	it('should allow a tweet to be posted', async function() {
 		// If we set closed to true it should be true.
-		await contract.post(account1.name, '1', 'This is a test.', { from: account1 });
+		await contract.post(account1.name, 1, 'This is a test.', { from: account1 });
 		await assertRowsEqual(contract.tweets(), [
-			{ id: '1', author: account1.name, msg: 'This is a test.', flagged: false },
-		]);
+			{ id: 1, author: account1.name, msg: 'This is a test.', flagged: false },
+		], true);
 	});
 
 	it('should successfully call get', async function() {
 		// Before there's a tweet we're not going to find the record.
-		await assertEOSException(contract.get('1'));
+		await assertEOSException(contract.get(1));
 
 		// But it should find the record after we post.
-		await contract.post(account1.name, '1', 'This is a test.', { from: account1 });
-		await contract.get('1');
+		await contract.post(account1.name, 1, 'This is a test.', { from: account1 });
+		await contract.get(1);
 	});
 
 	it('should successfully call inventory', async function() {
@@ -47,7 +47,7 @@ describe('timeline', function() {
 		await contract.inventory('testing');
 
 		// And after
-		await contract.post(account1.name, '1', 'This is a test.', { from: account1 });
+		await contract.post(account1.name, 1, 'This is a test.', { from: account1 });
 
 		// We need to wait for the next block to ensure we're not double-broadcasting the same transaction.
 		await nextBlock();

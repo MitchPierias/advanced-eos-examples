@@ -5,7 +5,7 @@ describe('hashes', function() {
 	let contract: Hashes;
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Hashes>('01_Hashes/hashes');
+		contract = await ContractDeployer.deploy<Hashes>('01_Hashes/hashes');
 	});
 
 	it('should successfully call hash', async function() {

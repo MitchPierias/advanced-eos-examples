@@ -10,7 +10,7 @@ describe('vectors', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Vectors>(
+		contract = await ContractDeployer.deploy<Vectors>(
 			'05_Table-One-To-Many-Relationships/01_Vectors/vectors'
 		);
 	});
@@ -30,8 +30,8 @@ describe('vectors', function() {
 		await assertRowsEqual(contract.players(), [{ account: account1.name, items: [] }]);
 
 		await contract.add(account1.name, 'This is an item', { from: account1 });
-		await assertRowsEqual(contract.items(), [{ id: '0', name: 'This is an item' }]);
-		await assertRowsEqual(contract.players(), [{ account: account1.name, items: ['0'] }]);
+		await assertRowsEqual(contract.items(), [{ id: 0, name: 'This is an item' }]);
+		await assertRowsEqual(contract.players(), [{ account: account1.name, items: [0] }]);
 	});
 
 	it('should allow a player to have multiple items', async function() {
@@ -42,9 +42,9 @@ describe('vectors', function() {
 		await contract.add(account1.name, 'This is another item', { from: account1 });
 
 		await assertRowsEqual(contract.items(), [
-			{ id: '0', name: 'This is an item' },
-			{ id: '1', name: 'This is another item' },
+			{ id: 0, name: 'This is an item' },
+			{ id: 1, name: 'This is another item' },
 		]);
-		await assertRowsEqual(contract.players(), [{ account: account1.name, items: ['0', '1'] }]);
+		await assertRowsEqual(contract.players(), [{ account: account1.name, items: [0, 1] }]);
 	});
 });

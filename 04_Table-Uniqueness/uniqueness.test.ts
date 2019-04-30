@@ -10,7 +10,7 @@ describe('uniqueness', function() {
 	});
 
 	beforeEach(async function() {
-		contract = await ContractDeployer.deployClean<Uniqueness>('04_Table-Uniqueness/uniqueness');
+		contract = await ContractDeployer.deploy<Uniqueness>('04_Table-Uniqueness/uniqueness');
 	});
 
 	it('should have correct defaults', async function() {
@@ -18,19 +18,19 @@ describe('uniqueness', function() {
 	});
 
 	it('should allow a single item to be added', async function() {
-		await contract.create(account1.name, 'Test', '1', { from: account1 });
+		await contract.create(account1.name, 'Test', 1, { from: account1 });
 		await assertRowsEqual(contract.items(), [
-			{ id: '0', name: 'Test', attack: '1', owner: account1.name },
+			{ id: 0, name: 'Test', attack: 1, owner: account1.name },
 		]);
 	});
 
 	it('should allow multiple items to be added', async function() {
-		await contract.create(account1.name, 'Test', '1', { from: account1 });
-		await contract.create(account1.name, 'Testing', '2', { from: account1 });
+		await contract.create(account1.name, 'Test', 1, { from: account1 });
+		await contract.create(account1.name, 'Testing', 2, { from: account1 });
 
 		await assertRowsEqual(contract.items(), [
-			{ id: '0', name: 'Test', attack: '1', owner: account1.name },
-			{ id: '1', name: 'Testing', attack: '2', owner: account1.name },
+			{ id: 0, name: 'Test', attack: 1, owner: account1.name },
+			{ id: 1, name: 'Testing', attack: 2, owner: account1.name },
 		]);
 	});
 });
