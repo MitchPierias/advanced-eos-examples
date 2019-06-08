@@ -10,7 +10,8 @@
 		"logs:all": "docker logs lamington 2>&1 >/dev/null",
 		"start": "lamington start eos",
 		"stop": "lamington stop eos",
-		"test": "lamington test"
+		"test": "lamington test",
+		"init": "lamington init"
 	},
 	"repository": {
 		"type": "git",
@@ -24,5 +25,9 @@
 	"homepage": "https://github.com/MitchPierias/Advanced-EOS-Examples#readme",
 	"devDependencies": {
 		"@types/mocha": "5.2.6"
+	},
+	"dependencies": {
+		"create-reactron-app": "0.0.5",
+		"lamington": "^1.0.0-alpha.1"
 	}
 }
