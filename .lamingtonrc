@@ -1,0 +1,7 @@
+{
+    "cdt": "https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.1/eosio.cdt_1.6.1-1_amd64.deb",
+    "eos": "https://github.com/EOSIO/eos/releases/download/v1.7.3/eosio_1.7.3-1-ubuntu-18.04_amd64.deb",
+    "outDir": ".lamington/compiled_contracts",
+    "keepAlive": false,
+    "exclude": []
+}

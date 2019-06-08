@@ -1,0 +1,33 @@
+{
+	"name": "advanced-eos-examples",
+	"version": "2.0.0",
+	"description": "Advanced EOS smart contract examples with tests and usage from EOSJS",
+	"main": "",
+	"scripts": {
+		"attach": "docker exec -it lamington bash",
+		"build": "lamington build",
+		"logs": "npm run logs:all | grep -vE \"^info |^warn |^error |^debug |.+keosd.+launched\"",
+		"logs:all": "docker logs lamington 2>&1 >/dev/null",
+		"start": "lamington start eos",
+		"stop": "lamington stop eos",
+		"test": "lamington test",
+		"init": "lamington init"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MitchPierias/Advanced-EOS-Examples.git"
+	},
+	"author": "Mitch Pierias & Kevin Brown",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/MitchPierias/Advanced-EOS-Examples/issues"
+	},
+	"homepage": "https://github.com/MitchPierias/Advanced-EOS-Examples#readme",
+	"devDependencies": {
+		"@types/mocha": "5.2.6"
+	},
+	"dependencies": {
+		"create-reactron-app": "0.0.5",
+		"lamington": "^1.0.0-alpha.1"
+	}
+}
