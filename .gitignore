@@ -12,3 +12,6 @@ node_modules/
 
 # Apple
 .DS_Store
+
+# Prettier
+.prettierrc
