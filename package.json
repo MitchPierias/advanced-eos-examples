@@ -17,17 +17,27 @@
 		"type": "git",
 		"url": "git+https://github.com/MitchPierias/Advanced-EOS-Examples.git"
 	},
-	"author": "Mitch Pierias & Kevin Brown",
+	"contributors": [
+		{
+			"name": "Mitch Pierias",
+			"url": "https://github.com/MitchPierias"
+		},
+		{
+			"name": "Kevin Brown",
+			"url": "https://github.com/thekevinbrown"
+		}
+	],
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/MitchPierias/Advanced-EOS-Examples/issues"
 	},
 	"homepage": "https://github.com/MitchPierias/Advanced-EOS-Examples#readme",
 	"devDependencies": {
-		"@types/mocha": "5.2.6"
+		"@types/mocha": "5.2.6",
+		"@types/node": "^12.6.8",
+		"eosjs": "^20.0.0",
+		"lamington": "^1.0.0-alpha.3",
+		"typescript": "^3.5.3"
 	},
-	"dependencies": {
-		"create-reactron-app": "0.0.5",
-		"lamington": "^1.0.0-alpha.1"
-	}
+	"dependencies": {}
 }
