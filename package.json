@@ -17,13 +17,16 @@
 		"type": "git",
 		"url": "git+https://github.com/MitchPierias/Advanced-EOS-Examples.git"
 	},
-	"contributors": [{
-        "name": "Mitch Pierias",
-        "url": "https://github.com/MitchPierias"
-    }, {
-        "name": "Kevin Brown",
-        "url": "https://github.com/thekevinbrown"
-    }],
+	"contributors": [
+		{
+			"name": "Mitch Pierias",
+			"url": "https://github.com/MitchPierias"
+		},
+		{
+			"name": "Kevin Brown",
+			"url": "https://github.com/thekevinbrown"
+		}
+	],
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/MitchPierias/Advanced-EOS-Examples/issues"
@@ -33,9 +36,8 @@
 		"@types/mocha": "5.2.6",
 		"@types/node": "^12.6.8",
 		"eosjs": "^20.0.0",
+		"lamington": "^1.0.0-alpha.3",
 		"typescript": "^3.5.3"
 	},
-	"dependencies": {
-		"lamington": "^1.0.0-alpha.1"
-	}
+	"dependencies": {}
 }
