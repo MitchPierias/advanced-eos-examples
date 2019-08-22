@@ -11,16 +11,10 @@ class[[eosio::contract("singletons")]] singletons : public contract
   public:
 	using contract::contract;
 
-	singletons(name receiver, name code, datastream<const char *> ds)
-		: contract(receiver, code, ds), config(_self, _self.value){
+	singletons(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds), config(_self, _self.value) {
 
-										}
-
-											[[eosio::action]] void
-											init()
-	{
-		config_row default_config;
-
+	} [[eosio::action]] void init() {
+		ConfigStruct default_config;
 		// This way, multi-initialisation simply does nothing as the singleton already exists.
 		config.get_or_create(_self, default_config);
 	}
@@ -49,17 +43,17 @@ class[[eosio::contract("singletons")]] singletons : public contract
 	};
 
   private:
-	struct [[eosio::table]] config_row
-	{
+
+	struct [[eosio::table]] ConfigStruct {
 		bool closed = false;
 		uint32_t char_count = 144;
 	};
 
-	typedef eosio::singleton<"settings"_n, config_row> settings_table;
+	typedef eosio::singleton<"settings"_n, ConfigStruct> settings_table;
 
 	// This next typedef is only here because of this bug: https://github.com/EOSIO/eosio.cdt/issues/280
 	// Once that's fixed this can be removed.
-	typedef eosio::multi_index<"settings"_n, config_row> settings_table_for_abi;
+	typedef eosio::multi_index<"settings"_n, ConfigStruct> settings_table_for_abi;
 
 	settings_table config;
 };

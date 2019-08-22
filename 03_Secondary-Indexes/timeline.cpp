@@ -6,15 +6,13 @@
 using namespace eosio;
 using std::string;
 
-class[[eosio::contract("timeline")]] timeline : public eosio::contract
-{
+class[[eosio::contract("timeline")]] timeline : public eosio::contract {
 
-  public:
+public:
 	using contract::contract;
 
 	[[eosio::action]] void post(const name username, uint64_t id, const string &msg_str) {
 		tweet_table tweets(_self, _self.value);
-
 		// Create and store tweet
 		tweets.emplace(username, [&](auto &tweet) {
 			tweet.id = id;
@@ -22,26 +20,22 @@ class[[eosio::contract("timeline")]] timeline : public eosio::contract
 			tweet.msg = msg_str;
 		});
 	}
-
-		[[eosio::action]] void
-		get(uint64_t id)
-	{
+	
+	[[eosio::action]] void get(uint64_t id) {
 		tweet_table tweets(_self, _self.value);
-
 		// Get tweet at id
 		auto tweet = tweets.get(id);
 		print(tweet.msg);
 	}
 
 	[[eosio::action]] void inventory(const name account) {
-		tweet_table tweets(_self, _self.value);
 
+		tweet_table tweets(_self, _self.value);
 		// Fetch tweets and display
 		auto author_index = tweets.get_index<"byauthor"_n>();
 		auto iter = author_index.find(account.value);
 
-		while (iter != author_index.end())
-		{
+		while (iter != author_index.end()) {
 			print(iter->msg);
 			iter++;
 		}
