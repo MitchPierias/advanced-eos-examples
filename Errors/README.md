@@ -8,7 +8,7 @@ Thrown when attempting to issue or transfer assets using a different floating po
 
 ## Tables
 
-### ~~Out of Range Error~~
+### Out of Range Error
 
 Received when attempting to read a table using the `cleos get table CODE SCOPE TABLE_NAME` command;
 
@@ -24,5 +24,6 @@ This means your abi file is out of sync with your table data, so schema mapping 
 
 > Invalid with EOSIO.CDT 1.6
 
+- Ensure your `struct` schema matches the structure of the data your accessing.
 - ~~Ensure your `EOSIO_SERIALIZE(TYPE, MEMBERS)` reflects all members in your `struct`.~~
-- ~~Ensure you've deployed the correct ABI~~
+- Ensure you've deployed the correct ABI
