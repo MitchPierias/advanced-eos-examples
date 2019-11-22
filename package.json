@@ -36,7 +36,7 @@
 		"@types/mocha": "5.2.6",
 		"@types/node": "^12.6.8",
 		"eosjs": "^20.0.0",
-		"lamington": "^1.0.0-alpha.3",
+		"lamington": "^1.0.0-alpha.4",
 		"typescript": "^3.5.3"
 	},
 	"dependencies": {}
