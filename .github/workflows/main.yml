@@ -1,0 +1,30 @@
+# Test our contract integration with Lamington and the EOSIO network
+name: Integration Tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  lamington:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    # Clone repo and checkout project
+    - name: Fetch source
+      uses: actions/checkout@v2
+    # Configure environment
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        check-latest: true
+    # Install dependencies
+    - name: Install dependencies
+      run: yarn
+    # Run unit tests
+    - name: Run unit tests
+      run: yarn test
+      timeout-minutes: 10
